@@ -1,0 +1,50 @@
+version: 2
+registries:
+  npm-registry-npm-salsify-com-443-api-npm-npm-local:
+    type: npm-registry
+    url: https://npm.salsify.com:443/api/npm/npm-local
+    username: "${{secrets.NPM_REGISTRY_NPM_SALSIFY_COM_443_API_NPM_NPM_LOCAL_USERNAME}}"
+    password: "${{secrets.NPM_REGISTRY_NPM_SALSIFY_COM_443_API_NPM_NPM_LOCAL_PASSWORD}}"
+
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "10:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: probot
+    versions:
+    - 11.0.5
+    - 11.0.6
+    - 11.1.0
+    - 11.1.1
+    - 11.2.2
+    - 11.2.3
+    - 11.2.4
+  - dependency-name: y18n
+    versions:
+    - 4.0.1
+    - 4.0.2
+  - dependency-name: nock
+    versions:
+    - 13.0.10
+    - 13.0.6
+    - 13.0.7
+    - 13.0.8
+    - 13.0.9
+  - dependency-name: lockfile-lint
+    versions:
+    - 4.3.7
+    - 4.6.0
+    - 4.6.1
+  - dependency-name: js-yaml
+    versions:
+    - 4.0.0
+  commit-message:
+    prefix: fix
+    prefix-development: chore
+    include: scope
+  registries:
+  - npm-registry-npm-salsify-com-443-api-npm-npm-local
